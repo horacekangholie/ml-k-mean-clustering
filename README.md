@@ -10,7 +10,7 @@ The primary advantage of unsupervised learning is that it does not rely on large
 
 ### Characteristics of Unsupervised Learning
 
--   **No "Right Answer"**\
+-   **No "Right Answer"**
     Unlike supervised learning, unsupervised learning does not require pre-labeled target values during training.
 
 -   **Self-Directed Discovery**\
