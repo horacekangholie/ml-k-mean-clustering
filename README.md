@@ -45,12 +45,10 @@ kmeansModel = KMeans(
 
 -   Interpretation
     -   It's the total within-cluster sum of squared distances.
-    
     -   Lower inertia means tighter (more compact) clusters.
 
 -   Usage
     -   Used as the optimization objective that K-means minimizes.
-    
     -   Helpful in the "elbow method" to choose a good number of clusters: plot inertia vs. kkk and look for the point where the decrease levels off.
 
 `cluster_centers_`
@@ -58,26 +56,32 @@ kmeansModel = KMeans(
 The cluster_centers_ attribute of a fitted KMeans object holds the coordinates of each cluster’s centroid
 
 -   Interpretation: Gives you the prototypical point for each cluster.
-
 -   Prediction: You can compute distances from new samples to these centers to assign clusters.
-
 -   Visualization: Plot them (e.g. on a scatter of your data) to see where centroids lie.
 
 #### Methods
 
 -   `fit(X)`: Learns cluster centroids from data `X` (shape `(n_samples, n_features)`) by running k-means (init → iterate → converge).
-
 -   `predict(X)`: Assigns each sample in `X` to the nearest learned centroid.
-
 -   `fit_predict(X)`: Convenience: runs `fit(X)` then `predict(X)` on the same data.
-
 -   `transform(X)`: Computes the distance of each sample in `X` to each cluster center.
-
 -   `fit_transform(X)`: Convenience: runs `fit(X)` then `transform(X)`.
 
 ### inertia: Evaluating Clustering Quality
 
 After you choose *K* and fit the model, the algorithm will quickly locate the *K* centroids and assign each sample to its nearest cluster. Once fitting is complete, you can compute the sum of squared distances from each sample to its assigned cluster center---this quantity is called **inertia**. A larger inertia value indicates poorer clustering (i.e. the clusters are less compact). By inspecting inertia, we can judge how well K-means has performed.
+
+```markdown
+kmeansModel.inertia_ (sum of squared distance within cluster)
+44448.45544793369
+
+kmeansModel.cluster_centers_ (coordinates of each cluster’s centroid)
+[[55.2962963  49.51851852]
+ [86.53846154 82.12820513]
+ [25.72727273 79.36363636]
+ [88.2        17.11428571]
+ [26.30434783 20.91304348]]
+```
 
 ### Visualizing the Clustering Results
 
@@ -88,11 +92,11 @@ Each cluster is drawn in a different color and marker shape, and the centroids a
 From the resulting, we can describe each cluster as follows:
 
 -   **Cluster 1:** Income and spending both around the average.
-
 -   **Cluster 2:** High income and high spending.
-
 -   **Cluster 3:** Low income but relatively high spending.
-
 -   **Cluster 4:** High income but relatively low spending.
-
 -   **Cluster 5:** Low income and low spending.
+
+### How to Choose the Best K
+
+To select the optimal number of clusters, we use the sum of squared distances between samples and their nearest centroid---**inertia**---as our evaluation metric. We run K-means for different values of *K* (e.g. 1 through 10), record the inertia each time, and then plot inertia versus *K*. The point where the inertia curve begins to flatten (the "elbow") indicates the most appropriate *K*. By choosing the *K* with the smallest inertia before diminishing returns, we ensure a well-balanced clustering solution.
