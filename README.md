@@ -25,47 +25,39 @@ The feature “Annual Income (k$)” represents each customer’s yearly income 
 
 The K-means implementation in scikit-learn offers a convenient interface, allowing users to perform clustering via a simple API. You can adjust parameters (like the number of clusters) to suit your needs and then run K-means to segment the data.
 
-#### Parameters
+**Parameters**
 
-```python
-kmeansModel = KMeans(
-    n_clusters=5,       # form 5 clusters
-    init='k-means++',   # smart centroid seeding
-    n_init=10,          # run 10 times, keep the best
-    max_iter=300,       # up to 300 iterations per run
-    tol=1e-4,           # convergence threshold
-    random_state=42,    # fixed seed for reproducibility
-    algorithm='auto'    # let sklearn pick the best method
-)
-```
+Below are the key parameters you can tune when using the K-means algorithm:
+-   **n_clusters**: The number of clusters **K** to form.
+-   **init**: Strategy for initializing the cluster centers.
+    -   `"k-means++"`: Selects initial centers in a way that speeds up convergence and reduces the chance of empty clusters.
+    -   `"random"`: Chooses **K** observations at random from the data as initial centroids.
+-   **n_init**: Number of times the algorithm will be run with different centroid seeds. The best output (lowest inertia) is kept.
+-   **max_iter**: Maximum number of iterations for a single run (default: 300).
+-   **random_state**: Seed for the random number generator---set this for reproducible results.
 
-#### Attributes
 
-`inertia_`
+**Attributes**
 
--   Interpretation
-    -   It's the total within-cluster sum of squared distances.
-    -   Lower inertia means tighter (more compact) clusters.
+-   **`inertia_`**: *float*---sum of squared distances of samples to their closest cluster center (a measure of cluster compactness).
 
--   Usage
-    -   Used as the optimization objective that K-means minimizes.
-    -   Helpful in the "elbow method" to choose a good number of clusters: plot inertia vs. kkk and look for the point where the decrease levels off.
+-   **`cluster_centers_`**
+    Array of shape `(K, n_features)` giving the coordinates of the cluster centers after fitting.
 
-`cluster_centers_`
+**Methods**
 
-The cluster_centers_ attribute of a fitted KMeans object holds the coordinates of each cluster’s centroid
+-   **`fit(X)`**\
+    Compute K-means clustering on data **X**.
 
--   Interpretation: Gives you the prototypical point for each cluster.
--   Prediction: You can compute distances from new samples to these centers to assign clusters.
--   Visualization: Plot them (e.g. on a scatter of your data) to see where centroids lie.
+-   **`predict(X)`**\
+    Given fitted centers, assign each sample in **X** to the nearest cluster and return its label.
 
-#### Methods
+-   **`fit_predict(X)`**\
+    Convenience method: run `fit(X)` followed by `predict(X)` in one call, returning cluster labels directly.
 
--   `fit(X)`: Learns cluster centroids from data `X` (shape `(n_samples, n_features)`) by running k-means (init → iterate → converge).
--   `predict(X)`: Assigns each sample in `X` to the nearest learned centroid.
--   `fit_predict(X)`: Convenience: runs `fit(X)` then `predict(X)` on the same data.
--   `transform(X)`: Computes the distance of each sample in `X` to each cluster center.
--   `fit_transform(X)`: Convenience: runs `fit(X)` then `transform(X)`.
+-   **`transform(X)`**\
+    Compute the distance from each sample in **X** to each cluster center (L₂ distance), returning an array of shape `(n_samples, K)`.
+
 
 ### inertia: Evaluating Clustering Quality
 
