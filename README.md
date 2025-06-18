@@ -17,7 +17,7 @@ This dataset includes the following columns:
 
 -   **Annual Income** (in thousands of dollars)
 
--   **Spending Score** (1 - 100)
+-   **Spending Score** (1 - 100)
 
 The feature “Annual Income (k$)” represents each customer’s yearly income in thousands of dollars, and “Spending Score (1–100)” indicates a score assigned based on the customer’s spending behavior and habits. By analyzing these two attributes, we can understand differences in customers’ spending patterns and income levels, perform clustering analysis, and then design targeted marketing strategies and services. 
 
@@ -41,7 +41,7 @@ kmeansModel = KMeans(
 
 #### Attributes
 
-**inertia_**
+`inertia_`
 
 -   Interpretation
     -   It's the total within-cluster sum of squared distances.
@@ -53,7 +53,7 @@ kmeansModel = KMeans(
     
     -   Helpful in the "elbow method" to choose a good number of clusters: plot inertia vs. kkk and look for the point where the decrease levels off.
 
-**cluster_centers_**
+`cluster_centers_`
 
 The cluster_centers_ attribute of a fitted KMeans object holds the coordinates of each cluster’s centroid
 
@@ -65,22 +65,34 @@ The cluster_centers_ attribute of a fitted KMeans object holds the coordinates o
 
 #### Methods
 
--   `fit(X)`\
-    Learns cluster centroids from data `X` (shape `(n_samples, n_features)`) by running k-means (init → iterate → converge).\
+-   `fit(X)`: Learns cluster centroids from data `X` (shape `(n_samples, n_features)`) by running k-means (init → iterate → converge).
 
--   `predict(X)`\
-    Assigns each sample in `X` to the nearest learned centroid.\
+-   `predict(X)`: Assigns each sample in `X` to the nearest learned centroid.
 
--   `fit_predict(X)`\
-    Convenience: runs `fit(X)` then `predict(X)` on the same data.\
+-   `fit_predict(X)`: Convenience: runs `fit(X)` then `predict(X)` on the same data.
 
--   `transform(X)`\
-    Computes the distance of each sample in `X` to each cluster center.\
+-   `transform(X)`: Computes the distance of each sample in `X` to each cluster center.
 
--   `fit_transform(X)`\
-    Convenience: runs `fit(X)` then `transform(X)`.\
+-   `fit_transform(X)`: Convenience: runs `fit(X)` then `transform(X)`.
 
 ### inertia: Evaluating Clustering Quality
 
 After you choose *K* and fit the model, the algorithm will quickly locate the *K* centroids and assign each sample to its nearest cluster. Once fitting is complete, you can compute the sum of squared distances from each sample to its assigned cluster center---this quantity is called **inertia**. A larger inertia value indicates poorer clustering (i.e. the clusters are less compact). By inspecting inertia, we can judge how well K-means has performed.
 
+### Visualizing the Clustering Results
+
+Each cluster is drawn in a different color and marker shape, and the centroids are highlighted with black stars. By plotting "Annual Income -- Spending Score," we can see how each group is distributed and clearly compare the clusters.
+
+![Scatter Plot](/assets/scatterplot.png)
+
+From the resulting, we can describe each cluster as follows:
+
+-   **Cluster 1:** Income and spending both around the average.
+
+-   **Cluster 2:** High income and high spending.
+
+-   **Cluster 3:** Low income but relatively high spending.
+
+-   **Cluster 4:** High income but relatively low spending.
+
+-   **Cluster 5:** Low income and low spending.
