@@ -39,3 +39,18 @@ By applying a clustering algorithm, we can effectively segment multi-dimensional
 
 -   Points in different clusters are as dissimilar as possible.
 
+**Optimization Objective of K-means**
+
+The primary goal of the K-means algorithm is to partition all data points into *K* clusters---each represented by a centroid---so that the average squared distance from each point to its assigned centroid is minimized. Formally, if we denote the set of points in cluster *Cᵢ* by Cᵢ and its centroid by μᵢ, the K-means objective function is:
+
+$$
+min⁡C,μJ=∑i=1K∑x∈Ci∥x-μi∥2.\min_{C,\;\mu}\;J \;=\;\sum_{i=1}^{K}\;\sum_{x\in C_i}\|\,x - \mu_i\|^2.C,μmin​J=i=1∑K​x∈Ci​∑​∥x-μi​∥2.
+$$
+
+When running K-means, a few practical considerations can greatly affect the stability and quality of your clusters:
+
+🔺 **Initialization -- Random Initialization**\
+K-means is sensitive to how the centroids are initialized. Different random starts can lead to very different final clusters. Since K-means is unsupervised, you don't know the "best" centroids beforehand---initial centers are typically chosen at random or by a simple heuristic.
+
+🔺 **Choosing the Number of Clusters**\
+Because K-means does not require labels, you must pick *K* yourself based on the data. A common strategy is to compute the **silhouette coefficient**, which balances within-cluster cohesion against between-cluster separation, and choose the *K* that maximizes this score.
