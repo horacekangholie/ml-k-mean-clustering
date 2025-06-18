@@ -28,20 +28,24 @@ The K-means implementation in scikit-learn offers a convenient interface, allowi
 **Parameters**
 
 Below are the key parameters you can tune when using the K-means algorithm:
--   **n_clusters**: The number of clusters **K** to form.
--   **init**: Strategy for initializing the cluster centers.
+-   **`n_clusters`**: The number of clusters **K** to form.
+
+-   **`init`**: Strategy for initializing the cluster centers.
     -   `"k-means++"`: Selects initial centers in a way that speeds up convergence and reduces the chance of empty clusters.
     -   `"random"`: Chooses **K** observations at random from the data as initial centroids.
--   **n_init**: Number of times the algorithm will be run with different centroid seeds. The best output (lowest inertia) is kept.
--   **max_iter**: Maximum number of iterations for a single run (default: 300).
--   **random_state**: Seed for the random number generator---set this for reproducible results.
+
+-   **`n_init`**: Number of times the algorithm will be run with different centroid seeds. The best output (lowest inertia) is kept.
+
+-   **`max_iter`**: Maximum number of iterations for a single run (default: 300).
+
+-   **`random_state`**: Seed for the random number generator---set this for reproducible results.
 
 
 **Attributes**
 
 -   **`inertia_`**: *float*---sum of squared distances of samples to their closest cluster center (a measure of cluster compactness).
 
--   **`cluster_centers_`**
+-   **`cluster_centers_`**:
     Array of shape `(K, n_features)` giving the coordinates of the cluster centers after fitting.
 
 **Methods**
@@ -92,3 +96,51 @@ From the resulting, we can describe each cluster as follows:
 ### How to Choose the Best K
 
 To select the optimal number of clusters, we use the sum of squared distances between samples and their nearest centroid---**inertia**---as our evaluation metric. We run K-means for different values of *K* (e.g. 1 through 10), record the inertia each time, and then plot inertia versus *K*. The point where the inertia curve begins to flatten (the "elbow") indicates the most appropriate *K*. By choosing the *K* with the smallest inertia before diminishing returns, we ensure a well-balanced clustering solution.
+
+![Elbow Method](/assets/elbow_methods.png)
+
+
+### Application of Dimensionality-Reduction Techniques in Machine Learning
+
+Dimensionality reduction refers to a set of methods that transform high-dimensional data into a lower-dimensional form while preserving as much of the original information (variance) as possible. In machine learning, dimensionality reduction is widely used to:
+
+-   **Mitigate the curse of dimensionality**, improving model performance and generalization.
+
+-   **Speed up computation** by reducing feature count, which lowers training and inference time.
+
+-   **Enhance interpretability** and reduce noise by discarding redundant or irrelevant features.
+
+-   **Facilitate visualization** of complex data in 2D or 3D plots.
+
+Common techniques include Principal Component Analysis (PCA), Linear Discriminant Analysis (LDA), and t-Distributed Stochastic Neighbor Embedding (t-SNE). In the following sections, following section will introduce these methods in detail and illustrate how to apply them to real-world datasets.
+
+**Concept of Dimensionality Reduction**
+
+The core idea of dimensionality reduction can be compared to file compression. Imagine you have a very large file---perhaps containing text, images, or other media---that is cumbersome to store and transmit. You use a compression algorithm to pack it into a much smaller archive. Although the compressed file is greatly reduced in size, it still retains the essential information of the original. When needed, you can decompress it and restore the original file contents.
+
+This is precisely the spirit of dimensionality reduction: **compressing and simplifying data without losing its overall structure or key information**, so that it can be processed more efficiently.
+
+
+### Principal Component Analysis (PCA)
+
+**Principal Component Analysis** (PCA) is one of the most common **linear** dimensionality-reduction methods. It finds new orthogonal axes (principal components) that successively maximize the variance of the data, and then projects the data onto the subspace spanned by the top components. PCA is especially effective when the number of features is large relative to the number of samples, helping to reveal underlying structure while discarding redundancy.
+
+The standard PCA workflow comprises five steps:
+
+1.  **Standardize the data**\
+    Scale each feature so they have the same units (e.g., zero mean and unit variance).
+
+2.  **Compute the covariance matrix**\
+    Measure pairwise covariances between all features.
+
+3.  **Eigen decomposition**\
+    Solve for the eigenvalues and eigenvectors of the covariance matrix.
+
+4.  **Select principal components**\
+    Rank the eigenvectors by their eigenvalues (from largest to smallest) and choose the top *k* that capture the most variance.
+
+5.  **Transform the data**\
+    Project the original data onto the subspace defined by the selected eigenvectors, yielding a *k*-dimensional representation.
+
+PCA is straightforward and often very effective at compressing data and removing noise. However, because it relies on global variance (the covariance matrix), it can be sensitive to outliers and cannot capture nonlinear structure. In practice, applying PCA to data with strong nonlinear relationships may lead to cluster overlap or loss of important structure. Therefore, PCA is best suited for datasets where the dominant variations are roughly linear; for more complex, nonlinear manifolds, other methods such as t-SNE or kernel PCA may be more appropriate.
+
