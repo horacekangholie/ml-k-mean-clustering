@@ -38,3 +38,4 @@ By applying a clustering algorithm, we can effectively segment multi-dimensional
 -   Points within each cluster are as similar as possible to one another, and
 
 -   Points in different clusters are as dissimilar as possible.
+# K-Mean Clustering - Customer Segmentation
