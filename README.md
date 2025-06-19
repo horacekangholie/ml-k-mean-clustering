@@ -1,5 +1,18 @@
 # K-Mean Clustering - Customer Segmentation
 
+## 📌 Table of Contents
+
+- [Dataset Description](#dataset-description)
+- [Build a K-means Model](#build-a-k-means-model)
+- [inertia: Evaluating Clustering Quality](#inertia-evaluating-clustering-quality)
+- [Visualizing the Clustering Results](#visualizing-the-clustering-results)
+- [How to Choose the Best K](#how-to-choose-the-best-k)
+- [Application of Dimensionality-Reduction Techniques in Machine Learning](#application-of-dimensionality-reduction-techniques-in-machine-learning)
+- [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
+- [t-Distributed Stochastic Neighbor Embedding (t-SNE)](#t-distributed-stochastic-neighbor-embedding-t-sne)
+
+-----------------------------------
+
 In this case study, we’ll load and analyze a publicly available customer purchase dataset from Kaggle, then apply the K-means algorithm to segment customers. The goal is to better understand groups’ spending preferences and characteristics. 
 
 Download dataset:
