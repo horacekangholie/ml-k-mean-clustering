@@ -61,7 +61,7 @@ Below are the key parameters you can tune when using the K-means algorithm:
 
 -   **`transform(X)`**\
     Compute the distance from each sample in **X** to each cluster center (L₂ distance), returning an array of shape `(n_samples, K)`.
-
+    
 
 ### inertia: Evaluating Clustering Quality
 
@@ -142,5 +142,65 @@ The standard PCA workflow comprises five steps:
 5.  **Transform the data**\
     Project the original data onto the subspace defined by the selected eigenvectors, yielding a *k*-dimensional representation.
 
-PCA is straightforward and often very effective at compressing data and removing noise. However, because it relies on global variance (the covariance matrix), it can be sensitive to outliers and cannot capture nonlinear structure. In practice, applying PCA to data with strong nonlinear relationships may lead to cluster overlap or loss of important structure. Therefore, PCA is best suited for datasets where the dominant variations are roughly linear; for more complex, nonlinear manifolds, other methods such as t-SNE or kernel PCA may be more appropriate.
+**Parameters**
 
+- **`n_components`** int\
+  Number of principal components to keep (i.e. target dimension).
+
+- **`whiten`** bool (default=False)\
+  Whether to whiten (scale) components to unit variance (zero mean, variance 1).
+
+- **`random_state`** int or None\
+  Random‐state seed for reproducible results.
+
+**Attributes**
+
+- **`explained_variance_`** array, shape=(n_components,): Variance of each principal component (the larger, the more information retained).
+
+- **`explained_variance_ratio_`** array, shape=(n_components,): Proportion of the dataset's total variance explained by each component.
+
+- **`n_components_`** int: Number of components kept.
+
+**Methods**
+
+- **`fit(X[, y])`**: Fit the PCA model with the data X.
+
+- **`fit_transform(X[, y])`**: Fit the model and return the data transformed into the principal‐component space.
+
+- **`transform(X)`**: Apply the existing PCA transformation to new data X.
+
+
+- **Variance ratio** measures each component's share of the total variance.
+
+- **Variance** is the absolute variance along each principal axis.
+
+PCA is straightforward and often very effective at compressing data and removing noise. However, because it relies on global variance (the covariance matrix), it can be sensitive to outliers and **cannot capture nonlinear structure**. In practice, applying PCA to data with strong nonlinear relationships may lead to cluster overlap or loss of important structure. Therefore, PCA is best suited for datasets where the dominant variations are roughly linear; for more complex, nonlinear manifolds, other methods such as t-SNE or kernel PCA may be more appropriate.
+
+
+### t-Distributed Stochastic Neighbor Embedding (t-SNE)
+
+We can use the t-Distributed Stochastic Neighbor Embedding (t-SNE) implementation in sklearn.manifold to project our high-dimensional digit data into two dimensions. 
+
+**Parameters**
+
+-   **n_components**: The number of dimensions of the embedded space after t-SNE.
+
+-   **perplexity**: The number of nearest neighbors considered during optimization. Default is 30; recommended range is 5--50.
+
+-   **learning_rate**: The learning rate---usually set between 10 and 1000. Default is 200.
+
+-   **n_iter**: The maximum number of iterations. Default is 1000.
+
+-   **random_state**: The random seed, to ensure that each run of t-SNE produces the same result.
+
+**Attributes**
+
+-   **embedding_**: The array of shape (n_samples, n_components) with the embedded coordinates.
+
+-   **kl_divergence_**: The final Kullback--Leibler divergence after optimization.
+
+-   **n_iter_**: The actual number of iterations run.
+
+**Methods**
+
+-   **fit_transform(X, y)**: Fit the model to X (and optional labels y) and return the transformed (low-dimensional) data.
