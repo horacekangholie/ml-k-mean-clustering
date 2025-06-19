@@ -155,11 +155,14 @@ The standard PCA workflow comprises five steps:
 
 **Attributes**
 
-- **`explained_variance_`** array, shape=(n_components,): Variance of each principal component (the larger, the more information retained).
+- **`explained_variance_`** array, shape=(n_components,)\
+  Variance of each principal component (the larger, the more information retained).
 
-- **`explained_variance_ratio_`** array, shape=(n_components,): Proportion of the dataset's total variance explained by each component.
+- **`explained_variance_ratio_`** array, shape=(n_components,)\ 
+  Proportion of the dataset's total variance explained by each component.
 
-- **`n_components_`** int: Number of components kept.
+- **`n_components_`** int\ 
+  Number of components kept.
 
 **Methods**
 
@@ -204,3 +207,9 @@ We can use the t-Distributed Stochastic Neighbor Embedding (t-SNE) implementatio
 **Methods**
 
 -   **fit_transform(X, y)**: Fit the model to X (and optional labels y) and return the transformed (low-dimensional) data.
+
+![t-SNE](/assets/t-SNE.png)
+
+After applying t-SNE to reduce the dimensionality of the training set, the resulting two-dimensional plot shows clear clusters corresponding to each handwritten digit. Compared with PCA, t-SNE more effectively captures the data’s nonlinear structure, so points from different digit classes are better separated. This crisp clustering makes t-SNE especially powerful for visualization and unsupervised grouping. In practice, you can even feed the 2D t-SNE embedding directly into a K-Means algorithm to discover ten cluster centers, or use the embedding as input to a supervised classifier for training and prediction.
+
+One important caveat is that **t-SNE cannot be applied to new (unseen) data**. PCA, by contrast, simply exposes a transform() method so you can project fresh samples into the existing PCA space. Because scikit-learn’s t-SNE implementation is based on pairwise neighbor relationships, it does not provide a transform() routine. As a result, t-SNE is really only suitable for one-off dimensionality reduction and visualization—you cannot directly embed new points into the learned t-SNE map. Each run of t-SNE must recompute all similarities and the low-dimensional layout from scratch, so there’s no guarantee that new data will be embedded consistently with the original training set.
