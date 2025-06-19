@@ -186,27 +186,27 @@ We can use the t-Distributed Stochastic Neighbor Embedding (t-SNE) implementatio
 
 **Parameters**
 
--   **n_components**: The number of dimensions of the embedded space after t-SNE.
+-   **`n_components`**: The number of dimensions of the embedded space after t-SNE.
 
--   **perplexity**: The number of nearest neighbors considered during optimization. Default is 30; recommended range is 5--50.
+-   **`perplexity`**: The number of nearest neighbors considered during optimization. Default is 30; recommended range is 5--50.
 
--   **learning_rate**: The learning rate---usually set between 10 and 1000. Default is 200.
+-   **`learning_rate`**: The learning rate---usually set between 10 and 1000. Default is 200.
 
--   **n_iter**: The maximum number of iterations. Default is 1000.
+-   **`n_iter`**: The maximum number of iterations. Default is 1000.
 
--   **random_state**: The random seed, to ensure that each run of t-SNE produces the same result.
+-   **`random_state`**: The random seed, to ensure that each run of t-SNE produces the same result.
 
 **Attributes**
 
--   **embedding_**: The array of shape (n_samples, n_components) with the embedded coordinates.
+-   **`embedding_`**: The array of shape (n_samples, n_components) with the embedded coordinates.
 
--   **kl_divergence_**: The final Kullback--Leibler divergence after optimization.
+-   **`kl_divergence_`**: The final Kullback--Leibler divergence after optimization.
 
--   **n_iter_**: The actual number of iterations run.
+-   **`n_iter_`**: The actual number of iterations run.
 
 **Methods**
 
--   **fit_transform(X, y)**: Fit the model to X (and optional labels y) and return the transformed (low-dimensional) data.
+-   **`fit_transform(X, y)`**: Fit the model to X (and optional labels y) and return the transformed (low-dimensional) data.
 
 ![t-SNE](/assets/t-SNE.png)
 
