@@ -190,6 +190,10 @@ The standard PCA workflow comprises five steps:
 
 - **Variance** is the absolute variance along each principal axis.
 
+![PCA Train](/assets/pca_train.png)
+
+![PCA Test](/assets/pca_test.png)
+
 PCA is straightforward and often very effective at compressing data and removing noise. However, because it relies on global variance (the covariance matrix), it can be sensitive to outliers and **cannot capture nonlinear structure**. In practice, applying PCA to data with strong nonlinear relationships may lead to cluster overlap or loss of important structure. Therefore, PCA is best suited for datasets where the dominant variations are roughly linear; for more complex, nonlinear manifolds, other methods such as t-SNE or kernel PCA may be more appropriate.
 
 
