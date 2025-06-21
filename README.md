@@ -158,11 +158,6 @@ From the resulting, we can describe each cluster as follows:
   ![PCA Train](/assets/pca_train.png)
   ![PCA Test](/assets/pca_test.png)
 
-## 💡 Sample case
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visualizing Handwritten Digits
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Demo Code](/notebooks/customer_segmentation.ipynb)
 
 ## 📌 t-SNE (t-distributed Stochastic Neighbor Embedding)
 
@@ -191,5 +186,9 @@ From the resulting, we can describe each cluster as follows:
 
   ![t-SNE](/assets/t-SNE.png)
 
+## 💡 Sample case
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visualizing Handwritten Digits
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Demo Code](/notebooks/customer_segmentation.ipynb)
 
