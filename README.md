@@ -2,8 +2,7 @@
 
 ## 📌 Introduction
 
-**K-Means Clustering** is an **unsupervised machine learning algorithm** used to partition a dataset into **K distinct, non-overlapping clusters**.\
-It aims to group data points so that points within the same cluster are more similar to each other than to those in other clusters, based on distance metrics (typically Euclidean distance).
+**K-Means Clustering** is an **unsupervised machine learning algorithm** used to partition a dataset into **K distinct, non-overlapping clusters**. It aims to group data points so that points within the same cluster are more similar to each other than to those in other clusters, based on distance metrics (typically Euclidean distance).
 
 ## ⚙️ What the Model Does
 
@@ -104,8 +103,7 @@ This dataset includes the following columns:
 
 -   Spending Score (1 - 100): a synthetic metric representing how much and how “good” a customer is, based on their shopping behavior.
 
-The feature “Annual Income (k$)” represents each customer’s yearly income in thousands of dollars, and “Spending Score (1–100)” indicates a score assigned based on the customer’s spending behavior and habits.\
-By analyzing these two attributes, we can understand differences in customers’ spending patterns and income levels, perform clustering analysis, and then design targeted marketing strategies and services. 
+The feature “Annual Income (k$)” represents each customer’s yearly income in thousands of dollars, and “Spending Score (1–100)” indicates a score assigned based on the customer’s spending behavior and habits. By analyzing these two attributes, we can understand differences in customers’ spending patterns and income levels, perform clustering analysis, and then design targeted marketing strategies and services. 
 
 Visualizing the Clustering Results
 
