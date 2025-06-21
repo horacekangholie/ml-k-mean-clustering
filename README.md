@@ -63,6 +63,8 @@ K-Means works by:
 - **Definition**: Total within-cluster sum of squares (WSS).
 - **Interpretation**: Lower values indicate tighter clusters. Used for **Elbow Method** to find optimal K.
 
+  ![Elbow Method](/assets/elbow_methods.png)
+
 ### 2. **Silhouette Score**
 - **Definition**: Measure of how similar an object is to its own cluster compared to others.
 - **Range**: `-1` (poor clustering) to `1` (well-clustered).
