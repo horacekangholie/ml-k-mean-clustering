@@ -82,7 +82,7 @@ A retail company wants to group customers based on purchasing behavior. By apply
 
 ## 📈 Sample Dataset
 
-Description
+**Description**
 
 The Mall Customer Segmentation dataset from Kaggle is a small, fictional dataset (200 rows) designed to teach unsupervised learning techniques in Python—specifically customer segmentation using clustering.\
 This dataset helps demonstrate how clustering can reveal natural groupings within customer data. It allows you to profile distinct segments (by age, income, spending) and derive strategic insights—like which segments to attract, retain, or upsell—making it a classic tutorial example for customer segmentation in retail and marketing analytics.
@@ -103,7 +103,7 @@ This dataset includes the following columns:
 
 The feature “Annual Income (k$)” represents each customer’s yearly income in thousands of dollars, and “Spending Score (1–100)” indicates a score assigned based on the customer’s spending behavior and habits. By analyzing these two attributes, we can understand differences in customers’ spending patterns and income levels, perform clustering analysis, and then design targeted marketing strategies and services. 
 
-Visualizing the Clustering Results
+**Visualizing the Clustering Results**
 
 Each cluster is drawn in a different color and marker shape, and the centroids are highlighted with black stars. By plotting "Annual Income -- Spending Score," we can see how each group is distributed and clearly compare the clusters.
 
@@ -116,3 +116,80 @@ From the resulting, we can describe each cluster as follows:
 -   **Cluster 3:** Low income but relatively high spending.
 -   **Cluster 4:** High income but relatively low spending.
 -   **Cluster 5:** Low income and low spending.
+
+<br><br><br>
+
+# 🧠 Dimensionality Reduction: PCA and t-SNE
+
+## 📌 Principal Component Analysis (PCA)
+
+**Principal Component Analysis (PCA)** is a linear dimensionality reduction technique that transforms the data into a new coordinate system. The highest variance by any projection of the data lies on the first principal component, the second highest on the second component, and so on.
+
+## ⚙️ What PCA Does
+
+- **Objective**: Reduce the number of features (dimensions) while retaining most of the variance.
+- **How**: Projects the original features into a new set of orthogonal components sorted by importance (variance).
+- **Limitation**: Only captures **linear** relationships and assumes global structure matters more than local.
+
+## 🔧 Parameters, Attributes, Methods
+
+| Name                          | Type        | Description                                                                 |
+|-------------------------------|-------------|-----------------------------------------------------------------------------|
+| `n_components`               | Parameter   | Number of components to keep                                               |
+| `fit(X)`                     | Method      | Fit the PCA model to X                                                     |
+| `transform(X)`              | Method      | Apply the dimensionality reduction                                         |
+| `fit_transform(X)`          | Method      | Fit and transform X                                                        |
+| `explained_variance_`       | Attribute   | Variance explained by each component                                       |
+| `explained_variance_ratio_` | Attribute   | Ratio of variance explained by each component                             |
+| `components_`               | Attribute   | Principal axes in feature space                                            |
+
+## 📏 Evaluation Metrics
+
+- **Explained Variance Ratio**:  
+  
+  $\text{Ratio} = \frac{\text{variance captured by PC}_i}{\text{total variance}}$
+
+    ```markdown
+    pca.explained_variance_ratio_
+    ```
+
+- **Visualization**: Visualize how much variance is captured by each component.
+
+  ![PCA Train](/assets/pca_train.png)
+  ![PCA Test](/assets/pca_test.png)
+
+## 💡 Sample case
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visualizing Handwritten Digits
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Demo Code](/notebooks/customer_segmentation.ipynb)
+
+## 📌 t-SNE (t-distributed Stochastic Neighbor Embedding)
+
+**t-SNE** is a non-linear dimensionality reduction technique particularly good for **visualizing high-dimensional data** in 2D or 3D. It models pairwise similarity with probability distributions and tries to preserve local neighbor structure.
+
+## ⚙️ What t-SNE Does
+
+- **Objective**: Preserve **local similarity** of points in reduced space.
+- **How**: Minimizes KL divergence between high-dimensional and low-dimensional pairwise similarities.
+- **Limitation**: Computationally intensive, not suitable for general-purpose dimension reduction or further ML tasks.
+
+## 🔧 Parameters, Attributes, Methods
+
+| Name         | Type      | Description                                                             |
+|--------------|-----------|-------------------------------------------------------------------------|
+| `n_components` | Parameter | Target dimension (usually 2 or 3)                                       |
+| `perplexity`   | Parameter | Balance between local and global aspects of data                        |
+| `learning_rate`| Parameter | Step size in optimization                                               |
+| `fit_transform(X)` | Method | Learns the embedding and returns reduced data                          |
+
+## 📏 Evaluation Metrics
+
+- t-SNE has no direct metric like PCA’s explained variance.
+
+- Visual inspection is key — data clusters should appear meaningfully separated.
+
+  ![t-SNE](/assets/t-SNE.png)
+
+
+
