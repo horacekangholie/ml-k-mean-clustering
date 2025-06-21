@@ -87,9 +87,7 @@ Description
 The Mall Customer Segmentation dataset from Kaggle is a small, fictional dataset (200 rows) designed to teach unsupervised learning techniques in Python—specifically customer segmentation using clustering.\
 This dataset helps demonstrate how clustering can reveal natural groupings within customer data. It allows you to profile distinct segments (by age, income, spending) and derive strategic insights—like which segments to attract, retain, or upsell—making it a classic tutorial example for customer segmentation in retail and marketing analytics.
 
-Dataset
-
-[Mall Customer Segmentation Data](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python/data)
+Download dataset: [Mall Customer Segmentation Data](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python/data)
 
 This dataset includes the following columns:
 
