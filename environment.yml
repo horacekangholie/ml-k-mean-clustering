@@ -11,4 +11,3 @@ dependencies:
   - scikit-learn
   - notebook
   - ipykernel
-  
